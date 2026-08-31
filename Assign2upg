@@ -1,0 +1,180 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+private:
+    int rollNumber;
+    string name;
+    string className;
+    char division;
+    string dateOfBirth;
+    string bloodGroup;
+    string contactAddress;
+    string telephoneNumber;
+    string drivingLicenseNo;
+    int admissionYear;
+
+public:
+    // Default Constructor
+    Student() {
+        rollNumber = 0;
+        name = "";
+        className = "";
+        division = 'A';
+        dateOfBirth = "";
+        bloodGroup = "";
+        contactAddress = "";
+        telephoneNumber = "";
+        drivingLicenseNo = "";
+        admissionYear = 0;
+    }
+
+    // Getter for Roll Number
+    int getRollNumber() const {
+        return rollNumber;
+    }
+
+    // Function to input student data
+    void inputDetails() {
+        cout << "Enter Roll Number: ";
+        cin >> rollNumber;
+        cin.ignore(); // Clear newline buffer
+
+        cout << "Enter Name: ";
+        getline(cin, name);
+
+        cout << "Enter Class: ";
+        getline(cin, className);
+
+        cout << "Enter Division: ";
+        cin >> division;
+        cin.ignore();
+
+        cout << "Enter Date of Birth (DD/MM/YYYY): ";
+        getline(cin, dateOfBirth);
+
+        cout << "Enter Blood Group: ";
+        getline(cin, bloodGroup);
+
+        cout << "Enter Contact Address: ";
+        getline(cin, contactAddress);
+
+        cout << "Enter Telephone Number: ";
+        getline(cin, telephoneNumber);
+
+        cout << "Enter Driving License No: ";
+        getline(cin, drivingLicenseNo);
+
+        cout << "Enter Admission Year: ";
+        cin >> admissionYear;
+        cin.ignore();
+    }
+
+    // Function to display student details
+    void displayDetails() const {
+        cout << "Roll Number    : " << rollNumber << endl;
+        cout << "Name           : " << name << endl;
+        cout << "Class          : " << className << endl;
+        cout << "Division       : " << division << endl;
+        cout << "Date of Birth  : " << dateOfBirth << endl;
+        cout << "Blood Group    : " << bloodGroup << endl;
+        cout << "Address        : " << contactAddress << endl;
+        cout << "Telephone No.  : " << telephoneNumber << endl;
+        cout << "License No.    : " << drivingLicenseNo << endl;
+        cout << "Admission Year : " << admissionYear << endl;
+    }
+};
+
+int main() {
+    const int MAX_STUDENTS = 100;
+    Student database[MAX_STUDENTS];
+    int currentCount = 0;
+    int choice;
+
+    do {
+        cout << "\n====================================\n";
+        cout << "   STUDENT DATABASE SYSTEM MENU   \n";
+        cout << "====================================\n";
+        cout << "1. Add Student Record\n";
+        cout << "2. Display All Records\n";
+        cout << "3. Search Student by Roll Number\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                if (currentCount < MAX_STUDENTS) {
+                    cout << "\n--- Entering Student Details ---\n";
+                    database[currentCount].inputDetails();
+                    currentCount++;
+                    cout << "\nRecord added successfully!\n";
+                } else {
+                    cout << "\nDatabase full! Cannot add more records.\n";
+                }
+                break;
+            }
+
+            case 2: {
+                if (currentCount == 0) {
+                    cout << "\nNo records found to display.\n";
+                } else {
+                    cout << "\n--- All Student Records ---\n";
+                    for (int i = 0; i < currentCount; i++) {
+                        cout << "\n------------------------------\n";
+                        database[i].displayDetails();
+                    }
+                }
+                break;
+            }
+
+            case 3: {
+                if (currentCount == 0) {
+                    cout << "\nDatabase is empty.\n";
+                    break;
+                }
+
+                int searchRoll;
+                cout << "Enter Roll Number to search: ";
+                cin >> searchRoll;
+                cout << "\n";
+
+                bool found = false;
+
+                // Search through the student records
+                for (int i = 0; i < currentCount; i++) {
+                    if (database[i].getRollNumber() == searchRoll) {
+                        cout << "--- Record Found ---\n";
+                        database[i].displayDetails();
+                        found = true;
+
+                        // Stop searching after finding the student
+                        break;
+                    }
+                }
+
+                // Display message if student is not found
+                if (found == false) {
+                    cout << "Student with Roll Number " 
+                         << searchRoll << " not found.\n";
+                }
+                break;
+            }
+
+            // Exit the program
+            case 4:
+                cout << "Exiting system. Goodbye!\n";
+                break;
+
+            // Invalid choice
+            default:
+                cout << "Invalid choice! Please choose between 1 and 4.\n";
+                break;
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
