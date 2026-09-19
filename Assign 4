@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+class Book
+{
+	public:
+		float price;
+		string name;
+		int book_id;
+		string book_edition;
+		
+		void display()
+		{
+			cout<<"\t \n .......BOOK DETAILS....... \t "<<endl;
+			cout<<" BOOK NAME: "<<name<<endl;
+			cout<<" BOOK PRICE: "<<price<<endl;
+			cout<<" BOOK ID: "<<book_id<<endl;
+			cout<<" BOOK EDITION: "<<book_edition<<endl;
+		 } 
+		 Book()
+		 {
+		 	price = 3457;
+		 	name = "C++";
+		 	book_id = 876;
+		 	book_edition = "14th";
+		 }
+		 Book(float pri,string nam,int id,string edition)
+		 {
+		 	price = pri;
+		 	name = nam;
+		 	book_id = id;
+		 	book_edition = edition;
+		 }
+};
+int main()
+{
+	Book B1;
+	Book B2(767,"Python",265, "3rd");
+	B1.display();
+	B2.display();
+	return 0;
+}
