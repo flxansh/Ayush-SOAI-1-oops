@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+class employee
+{
+	public:
+		
+	   string employee_name;
+	   int employee_number;
+	   float employee_attendance;
+	   string employee_department;
+	
+	   void emp()
+	{
+		 cout<<"Please Enter Employee Name: "<<endl;
+		 cin>>employee_name;
+		 cout<<"Please Enter Employee Number: "<<endl;
+		 cin>>employee_number;
+		 cout<<"Please Enter Employee Attendance: "<<endl;
+		 cin>>employee_attendance;
+		 cout<<"Please Enter Employee Department: \n"<<endl;
+		 cin>>employee_department;
+	}
+	
+   	   void display()
+	{
+		  cout<<"\t  !!! Employee Information !!! \t"<<endl;
+		  cout<<"\n       Employee name: "<<employee_name<<endl;
+		  cout<<"\n       Employee number: "<<employee_number<<endl;
+		  cout<<"\n       Employee attendance: "<<employee_attendance<<endl;
+		  cout<<"\n       Employee department: "<<employee_department<<endl;
+	}
+};
+int main()
+{
+	employee e1;
+	e1.emp();
+	e1.display();
+	return 0;
+}
