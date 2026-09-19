@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+class Book
+{
+	public:
+		int bookid;
+		string bookname;
+		float book_price;
+		string book_publish_date;
+		
+		void book()
+		{
+			cout<<"\t ....BOOK STORE DETAILS.... \t"<<endl;
+			cout<<"BOOK ID: "<<bookid<<endl;
+			cout<<"BOOK NAME: "<<bookname<<endl;
+			cout<<"BOOK PRICE: "<<book_price<<endl;
+			cout<<"BOOK PUBLISH DATE: "<<book_publish_date<<endl;
+			cout<<"\n\n!!!THANK YOU !!!"<<endl;
+			cout<<"VISIT AGAIN"<<endl;
+		}
+};
+int main()
+{
+	Book B1;
+	B1.bookid= 27839;
+	B1.bookname="Mastering the art of decision making";
+	B1.book_price=110;
+	B1.book_publish_date="May 2018";
+	B1.book();
+	return 0;
+}
