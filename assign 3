@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Employee {
+private:
+    int empId;
+    string name;
+    string department;
+    double salary;
+
+public:
+    void setDetails(int employeeId, string empName,
+                    string empDepartment, double empSalary) {
+        empId = employeeId;
+        name = empName;
+        department = empDepartment;
+        salary = empSalary;
+    }
+
+    void displayInfo(bool authorized) const {
+        if (authorized) {
+            cout << "Employee ID: " << empId << endl;
+            cout << "Name: " << name << endl;
+            cout << "Department: " << department << endl;
+            cout << "Salary: " << salary << endl;
+            cout << "------------------------" << endl;
+        } else {
+            cout << "Access denied." << endl;
+        }
+    }
+};
+
+int main() {
+    const int MAX_EMPLOYEES = 2;
+    Employee staffList[MAX_EMPLOYEES];
+
+    staffList[0].setDetails(101, "Alice Smith", "HR", 55000.0);
+    staffList[1].setDetails(102, "Bob Jones", "Engineering", 75000.0);
+
+    bool isAuthorizedHR = true;
+
+    for (int i = 0; i < MAX_EMPLOYEES; ++i) {
+        staffList[i].displayInfo(isAuthorizedHR);
+    }
+
+    return 0;
+}
