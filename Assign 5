@@ -1,34 +1,32 @@
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
-class STUDENT
-{
-  public:
-    string student_name;
-    float per;
-    int passing_year;
-    int enrollmentno;
 
-   STUDENT(string student_name , float per,int passing_year, int enrollmentno)
-   {
-     this->student_name=student_name;
-     this->per= per;
-     this->passing_year = passing_year;
-     this->enrollmentno= enrollmentno;
-   }
-   void student()
-{
- cout<<"\n \t !!!!!! Student Details !!!!!! \t \n"<<"\n";
- cout<<"Student Name: "<<student_name<<"\n";
- cout<<"Student Percentage: "<<per<<"%"<<"\n";
- cout<<"Student Passing Year: "<<passing_year<<"\n";
- cout<<"Student Enrollment No.: "<<enrollmentno<<"\n";
-}
+class Student {
+private:
+    int rollNumber;
+    string name;
+    string course;
+
+public:
+    // Constructor
+    Student(int rollNumber, string name, string course) {
+        this->rollNumber = rollNumber;
+        this->name = name;
+        this->course = course;
+    }
+
+    // Display student details
+    void displayDetails() {
+        cout << "Student Details" << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Name: " << name << endl;
+        cout << "Course: " << course << endl;
+    }
 };
-int main()
-{
-  STUDENT S1("Bheem", 54.3, 1999,473892);
-  STUDENT S2("Astha",87.56,2001,75192);
-  S1.student();
-  S2.student();
-  return 0;
+
+int main() {
+    Student s1(101, "Anjali", "Computer Science");
+    s1.displayDetails();
+    return 0;
 }
